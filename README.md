@@ -1,6 +1,6 @@
 # Programmation Web en Java
 
-Philipe Mathieu, Guillaume Dufrêne  
+Philippe Mathieu, Guillaume Dufrêne  
 <img src="assets/UL-2014.png" width=250px>
 
 ---
