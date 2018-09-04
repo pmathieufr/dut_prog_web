@@ -18,11 +18,12 @@ Cette librairie contient à la fois les classes utiles au serveur de données (�
 
 * Ouvrez une console à cet endroit et lancez le serveur H2 à l'aide de la commande `java -jar h2-1.4.197.jar`.
 
-Une fenêtre de navigateur devrait souvrir, il s'agit d'une application web inclue dans la librairie permettant d'administrer le serveur que nous venons de lancer. Laissons cela de côté pour le moment, votre serveur H2 est prêt à être utilisé. Pour l'arrêter il suffira de faire `CTRL+C`dans la console où vous l'avez lancé, ou de fermer la console.
+Une fenêtre de navigateur s'ouvre, il s'agit d'une application web inclue dans la librairie permettant d'administrer le serveur que nous venons de lancer. Laissons cela de côté pour le moment, votre serveur H2 est prêt à être utilisé. Pour l'arrêter il suffira de faire `CTRL+C` dans la console où vous l'avez lancé, ou de fermer la console.
 
-Pour se connecter à ce serveur à l'aide du Driver JDBC, l'url à utiliser sera de la forme `jdbc:h2:tcp://localhost:9092/~/tp1`.  
+Pour se connecter à ce serveur à l'aide du Driver JDBC, l'url à utiliser est de la forme `jdbc:h2:tcp://localhost:9092/chemin/tp1`.  
 `localhost:9092` correspond à l'adresse et au port sur lesquelles se connecter.  
-`~/tp1` est la base de données à utiliser.
+`chemin` est l'endroit où la base sera créée.  
+`tp1` est le nom de la base.
 
 Il n'existe qu'un seul utilisateur pour se connecter : `sa`  
 Vous n'avez pas besoin de mot de passe, une chaine vide conviendra.
@@ -41,14 +42,14 @@ Lors de l'exécution, le classpath java doit contenir le chemin vers la librairi
 1. Compléter et tester le programme [Select.java](Select.java) qui effectue une sélection de table
 1. Ecrire un nouveau programme Java qui affiche le nombre de lignes de la table CLIENTS.
 
-Dans cet exercice, H2 a été utilisé comme Serveur et vos programmes Java comme Clients.
+**Dans cet exercice, H2 a été utilisé comme Serveur et vos programmes Java comme Clients.**
 
 
 ## Indépendance de JDBC et du SGBD
 
 Dans cette partie nous allons illustrer l'intérêt de jdbc. En ne modifiant que le driver et les paramètres de connexion JDBC, nous allons ré-exécuter ces programmes en utilisant postgreSQL.  
 
-Vous pouvez installer postgreSQL sur votre poste ou utiliser un serveur existant sur votre réseau (une instance est disponible sur le réseau de l'IUT de Lille).  
+Vous pouvez installer postgreSQL sur votre poste ou utiliser un serveur existant sur votre réseau.  
 Vous pouvez aussi créer une base "sur le cloud" avec des services comme :
 * [Clever Cloud](https://www.clever-cloud.com/fr/) 
 * [Heroku](https://www.heroku.com/pricing)
@@ -60,7 +61,7 @@ les 3 premiers offrent un plan "test" gratuit qui sera suffisant pour vos exerci
 1. Modifiez le nom du driver pour utiliser `org.postgresql.Driver`
 1. L'url de connexion sera de la forme : `jdbc:postgresql://serveur:port/base`
 1. Il faudra utiliser votre login et le mot de passe associé
-1. Compilez et Relancez maintenant chacun des programmes précédents. Vous pouvez vérifier à l'aide de psql que tout s'est bien passé.
+1. Compilez et relancez maintenant chacun des programmes précédents. Vous pouvez vérifier à l'aide de psql que tout s'est bien passé.
 
 Vos programmes java sont les clients du serveur postgres hébergeant une base de données.  
 Généralement un serveur est dédié à l'usage de base de données.  
@@ -78,9 +79,9 @@ Java offre pour cela un objet tout prêt : [java.util.Properties](https://docs.o
 
 ## Et maintenant sous forme d’un bel Objet
 
-Ecrire une classe `DS` permettant charger le fichier properties dans son constructeur. Cet object possédera une méthode "getConnection" qui renvoit une nouvelle connexion vers la base dont les paramètres sont fournis dans le fichier.
+Ecrire une classe `DS` permettant charger le fichier properties dans son constructeur. Cet object possédera une méthode "getConnection" qui renvoie une nouvelle connexion vers la base dont les paramètres sont fournis dans le fichier.
 
-Modifiez vos programmes pour utiliser cet objet `DS`.  
+1. Modifiez vos programmes pour utiliser cet objet `DS`.  
 
 exemple :
 
