@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="$lang$" xml:lang="$lang$"$if(dir)$ dir="$dir$"$endif$>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+$for(author-meta)$
+  <meta name="author" content="$author-meta$" />
+$endfor$
+$if(date-meta)$
+  <meta name="dcterms.date" content="$date-meta$" />
+$endif$
+$if(keywords)$
+  <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
+$endif$
+  <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
+  <style type="text/css">
+      code{white-space: pre-wrap; font-size: 1.2em;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+      header .author { text-align: right; display: inline-block; float: right; width: 250px; }
+      h1 {
+        background-image: url('tools/UL-WEB-2014.png');
+        background-size: 200px auto;
+        background-repeat: no-repeat;
+        line-height: 100px;
+        padding-left: 230px;
+      }
+      h1:after {
+        display: block;
+        border-bottom: solid 1px black;
+        clear: both;
+        height: 1px;
+        content: '';
+        margin-left: -230px;
+      }
+      body{ font-family: Arial }
+      a {
+        color: #000060;
+        text-decoration: none;
+      }
+      li { margin-bottom: 5px }
+      code.sourceCode { margin-left: 0px }
+      code { margin-left: 10px }
+$if(quotes)$
+      q { quotes: "“" "”" "‘" "’"; }
+$endif$
+  </style>
+$if(highlighting-css)$
+  <style type="text/css">
+$highlighting-css$
+  </style>
+$endif$
+$for(css)$
+  <link rel="stylesheet" href="$css$" />
+$endfor$
+$if(math)$
+  $math$
+$endif$
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+$for(header-includes)$
+  $header-includes$
+$endfor$
+</head>
+<body>
+$for(include-before)$
+$include-before$
+$endfor$
+<header>
+  
+<!-- <img src="tools/UL-WEB-2014.png" width="150" /> -->
+
+<!-- h1 class="title">$title$</h1 -->
+$if(subtitle)$
+<p class="subtitle">$subtitle$</p>
+$endif$
+<p class="author">
+  M3104 - WEB-BDD<br/>
+  DUT Info - N3<br/>
+  P.Mathieu / G.Dufrene<br/>
+  2018 - 2019<br/>
+</p>
+$if(date)$
+<p class="date">$date$</p>
+$endif$
+</header>
+
+
+$if(toc)$
+<nav id="$idprefix$TOC">
+$table-of-contents$
+</nav>
+$endif$
+$body$
+$for(include-after)$
+$include-after$
+$endfor$
+<script>
+var img = document.querySelector('img[alt=Palette]')
+if ( img ) img.setAttribute('src', 'cours02/exercices/img/Palette.png')
+var cours = "$cours$"
+
+document.querySelectorAll("a.uri").forEach( 
+  n => {
+    var href = n.getAttribute('href')
+    if ( href.indexOf('http') < 0 ) {
+      n.setAttribute("href", "https://github.com/pmathieufr/dut_prog_web/tree/master/"+cours+"/exercices/"+href);
+    }
+  }
+);
+</script>
+</body>
+</html>
