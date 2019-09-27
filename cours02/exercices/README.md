@@ -43,7 +43,7 @@ __Attention__: Si vous utiliser un proxy (c'est le cas à l'université de Lille
 
 ## Ma première page HTML
 
-Créez dans le répertoire tomcat/webapps/vide une page HTML nommée essai.html.
+Créez dans le répertoire `tomcat/webapps/vide` une page HTML nommée `essai.html`.
 
 ```html
 <HTML>
@@ -72,7 +72,7 @@ Ce test n’est pas anodin ! Si vous êtes arrivés ici, c’est que le serveur 
 
 ## Création de ma propre servlet
 
-Créez dans le répertoire vide/WEB-INF/classes la servlet First.java
+Créez dans le répertoire `vide/WEB-INF/classes` la servlet `First.java`
 
 ```java
 
@@ -111,7 +111,7 @@ Ce nom __doit__ commencer par "/". L'url d'accès à la servlet sera composée d
 L'exemple précédent aurait évidemment plus être écrit à l'aide d'une page html statique.  
 Lorsque l'on doit générer une grande quantité de code html ou calculer des données, l'utilisation d'une servlet devient nécessaire.  
 
-1. Ecrivez une servlet "Fibonacci" qui affiche les 30 premières valeurs de cette suite célèbre. La suite est définie par f(n) = f(n-1) + f(n-2) avec f(0) = 0 et f(1) = 1.  
+1. Ecrivez une servlet "Fibonacci" qui affiche les 30 premières valeurs de cette suite célèbre. La suite est définie par `f(n) = f(n-1) + f(n-2) avec f(0) = 0 et f(1) = 1`.  
 Pour le dire plus simplement, les deux premiers nombres sont 1, puis les suivants sont la somme des deux nombres précédents. Le résultat à obtenir doit donc être :  
 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 17711 28657 46368 75025 121393 196418 317811 514229 832040  
 
@@ -147,8 +147,7 @@ Chaque appel à cette servlet doit donc logiquement générer un affichage diff�
 Il est tout à fait possible, dans une servlet, d'afficher des données provenant d'un SGBD. C'est ce que font la majorité des applications web. Nous allons utiliser JDBC dans notre servlet.
 
 Il faut tout d'abord placer le driver JDBC dans le répertoire `WEB-INF/lib` de votre contexte web.  
-Tomcat se charge d'ajouter tous les jar présent à cet endroit dans son classpath lorsqu'il démarre.  
-
+Tomcat se charge d'ajouter tous les jar présents à cet endroit dans son classpath lorsqu'il démarre.  
 
 Exécutez les requêtes du fichier [foot.sql](https://github.com/pmathieufr/dut_prog_web/raw/master/cours02/exercices/foot.sql) sur votre base de données.  
 Cela devrait créer des tables et des données pour la suite des exercices.
