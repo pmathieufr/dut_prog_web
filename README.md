@@ -34,11 +34,11 @@ Pour chaque partie, vous trouverez :
 
 * [Cours 1](cours01) : Java DataBase Connectivity (JDBC)
 
-* Cours 2 : L'API Servlet
+* [Cours 2](cours02) : L'API Servlet
 
-* Cours 3 : Gérer des paramètres
+* [Cours 3](cours03): Gérer des paramètres
 
-* Cours 4 : Maintenir un état entre 2 requêtes
+* [Cours 4](cours04) : Maintenir un état entre 2 requêtes
 
 * Cours 5 : Utiliser une session
 
