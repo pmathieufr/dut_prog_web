@@ -40,7 +40,7 @@ Pour chaque partie, vous trouverez :
 
 * [Cours 4](cours04) : Maintenir un état entre 2 requêtes
 
-* Cours 5 : Utiliser une session
+* [Cours 5](cours05) : Utiliser une session
 
 * Cours 6 : Mécanisme d'authentification
 
