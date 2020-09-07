@@ -34,23 +34,23 @@ Pour chaque partie, vous trouverez :
 
 * [Cours 1](cours01) : Java DataBase Connectivity (JDBC)
 
-* Cours 2 : L'API Servlet
+* [Cours 2](cours02) : L'API Servlet
 
-* Cours 3 : Gérer des paramètres
+* [Cours 3](cours03) : Gérer des paramètres
 
-* Cours 4 : Maintenir un état entre 2 requêtes
+* [Cours 4](cours04) : Maintenir un état entre 2 requêtes
 
-* Cours 5 : Utiliser une session
+* [Cours 5](cours05) : Utiliser une session
 
-* Cours 6 : Mécanisme d'authentification
+* [Cours 6](cours06) : Mécanisme d'authentification
 
-* Cours 7 : Quelques notions de sécurité
+* [Cours 7](cours07) : Quelques notions de sécurité
 
-* Cours 8 : Le design pattern DAO
+* [Cours 8](cours08) : Le design pattern DAO
 
-* Cours 9 : Utiliser des pages JSP
+* [Cours 9](cours09) : Utiliser des pages JSP
 
-* Cours 10 : Mettre en place un MVC
+* [Cours 10](cours10) : Mettre en place un MVC
 
 ---
 

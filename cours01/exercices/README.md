@@ -4,71 +4,80 @@
 
 - Comprendre la manière dont fonctionne JDBC. 
 - Utiliser les méthodes principales de cette API.
-- Utiliser un driver.
+- Utiliser plusieurs drivers.
 
 Ces exercices sont supposés être réalisés sous Windows. Bien que les outils utilisés soient disponibles sous Linux ou MacOS, certaines explications sont ici propres à Windows. 
 
-## Lancer un serveur de données H2
+## Le serveur Postgresql
 
-Tous les programmes de ce TP seront écrits en utilisant le driver JDBC `org.h2.Driver`.  
-On utilise des programmes Java comme client et H2 comme serveur de données.
+Le département informatique de l'IUT-A a installé un serveur `Postgresql` pour ses étudiants sur une machine nommée `psqlserv`. Chacun d'entre vous possède un compte sur ce serveur, avec le même login que votre login Unix. Il y a plusieurs bases disponibles et la votre se nomme `fi2`. Assurez vous que vous pouvez vous y connecter :
 
-* Téléchargez la librairie [h2-1.4.197.jar](http://central.maven.org/maven2/com/h2database/h2/1.4.197/h2-1.4.197.jar) et placez là dans votre répertoire contenant vos sources java.
+```
+psql -h psqlserv fi2
+\d
+\q
+```
 
-Cette librairie contient à la fois les classes utiles au serveur de données (écrit en Java), et les classes implémentant le driver JDBC pour s'y connecter.
-
-* Ouvrez une console à cet endroit et lancez le serveur H2 à l'aide de la commande `java -jar h2-1.4.197.jar`.
-
-Une fenêtre de navigateur s'ouvre, il s'agit d'une application web inclue dans la librairie permettant d'administrer le serveur que nous venons de lancer. Laissons cela de côté pour le moment, votre serveur H2 est prêt à être utilisé. Pour l'arrêter il suffira de faire `CTRL+C` dans la console où vous l'avez lancé, ou de fermer la console.
-
-Dans vos programmes java, pour se connecter à ce serveur à l'aide du Driver JDBC, l'url à utiliser est de la forme `jdbc:h2:tcp://localhost:9092/chemin/tp1`.  
-`localhost:9092` correspond à l'adresse et au port sur lesquelles se connecter.  
-`chemin` est l'endroit où la base sera créée.  
-`tp1` est le nom de la base.
-
-Il n'existe qu'un seul utilisateur pour se connecter : `sa`  
-Vous n'avez pas besoin de mot de passe, une chaine vide conviendra.
-
-## Programmes de base
-
-1. Compléter le programme [Create.java](Create.java) qui crée une table `CLIENTS`. 
-1. Compiler le programme : `javac Create.java`  
-Le driver n'est pas nécessaire au moment de la compilation.
-1. Exécuter le programme : `java -cp .;h2-1.4.197.jar Create`  
-Lors de l'exécution, le classpath java doit contenir le chemin vers la librairie contenant le driver JDBC.
-1. Modifiez le programme pour éviter le throws exception
-1. Compléter et tester le programme [Insert.java](Insert.java) qui effectue une insertion de table.
-1. Modifier ce programme pour que l’on puisse insérer 1000 clients d’un coup: nom_1, ... ,nom_1000
-1. Compléter et tester le programme [Select.java](Select.java) qui effectue une sélection de table
-1. Ecrire un nouveau programme Java qui affiche le nombre de lignes de la table CLIENTS.
-
-**Dans cet exercice, H2 a été utilisé comme Serveur et vos programmes Java comme Clients.**
-
-
-## Indépendance de JDBC et du SGBD
-
-Dans cette partie nous allons illustrer l'intérêt de jdbc. En ne modifiant que le driver et les paramètres de connexion JDBC, nous allons ré-exécuter ces programmes en utilisant postgreSQL.  
-
-Vous pouvez installer postgreSQL sur votre poste ou utiliser un serveur existant sur votre réseau.  
+Pour information, il est bien évidemment aussi possible d'installer `Postgresql` sur votre propre machine ou utiliser un serveur existant sur votre réseau.  
 Vous pouvez aussi créer une base "sur le cloud" avec des services comme :
 * [Clever Cloud](https://www.clever-cloud.com/fr/) 
 * [Heroku](https://www.heroku.com/pricing)
 * [ElephantSQL](https://www.elephantsql.com/)
 * ou encore Amazon AWS, Google Cloud, Microsoft azure ...
+les 3 premiers offrent un plan "test" gratuit qui serait suffisant pour nos exercices.  
 
-les 3 premiers offrent un plan "test" gratuit qui sera suffisant pour vos exercices.  
-Pour la suite, 
 
-1. Modifiez le nom du driver pour utiliser `org.postgresql.Driver`
-1. L'url de connexion sera de la forme : `jdbc:postgresql://serveur:port/base`
-1. Il faudra utiliser votre login et le mot de passe associé
-1. Compilez et relancez maintenant chacun des programmes précédents.  
-Il faut utiliser le [driver JDBC Postgresql](https://jdbc.postgresql.org/download/postgresql-42.2.5.jar) à l'exécution.
-1. Vous pouvez vérifier à l'aide de psql que tout s'est bien passé.
+Dans une première partie, tous les exercices seront écrits avec cette base en utilisant le driver JDBC `org.postgresql.Driver`.
 
-Vos programmes java sont les clients du serveur postgres hébergeant une base de données.  
-Généralement un serveur est dédié à l'usage de base de données.  
-Dans ce cas, vos données ne se trouve pas sur votre ordinateur mais sur ce serveur.
+* Téléchargez la librairie [postgresql-42.2.16.jar](https://jdbc.postgresql.org/download/postgresql-42.2.16.jar). Cette librairie contient l'ensemble des classes définissant le fonctionnement du driver.
+
+* Pour des raisons de simplicité, vous placerez tous les fichiers (drivers, sources, classes) dans le même répertoire, `web/tp2` par exemple
+
+
+## Programmes de base
+
+1. Compléter le programme [Create.java](Create.java) qui crée une table `CLIENTS`. Pour cela
+  - Modifiez le nom du driver pour utiliser `org.postgresql.Driver`
+  - L'url de connexion sera de la forme : `jdbc:postgresql://serveur:port/base`
+  - Il faudra utiliser votre login et le mot de passe associé
+1. Compiler le programme : `javac Create.java`  
+Le driver n'est pas nécessaire au moment de la compilation.
+1. Exécuter le programme : `java -cp .;postgresql-42-2.16.jar Create`  
+Lors de l'exécution, le classpath java doit contenir le chemin vers la librairie contenant le driver JDBC.
+1. Modifiez le programme pour éviter le throws exception
+1. Compléter et tester le programme [Insert.java](Insert.java) qui effectue une insertion de table.
+1. Modifier ce programme pour que l’on puisse insérer 1000 clients d’un coup: nom_1, ... ,nom_1000
+1. Compléter et tester le programme [Select.java](Select.java) qui effectue une sélection de table
+1. Ecrire un nouveau programme Java `Compter.java` qui affiche le nombre de lignes de la table CLIENTS.
+
+**Dans cet exercice, Postgres a été utilisé comme Serveur et vos programmes Java comme Clients.**
+
+
+## Indépendance de JDBC et du SGBD : passage à H2
+
+Dans cette partie nous allons illustrer l'intérêt de jdbc. En ne modifiant que le driver et les paramètres de connexion JDBC, nous allons ré-exécuter ces programmes en utilisant cette fois la base de données `H2`. On utilise cette fois `H2` comme serveur de données, les programmes Java étant toujours des clients.
+
+* Contrairement à Postgresql, H2 n'est pas installé sur votre machine. Il va falloir lancer le serveur "à la main".
+
+* Téléchargez la librairie [h2-1.4.200.jar](https://repo1.maven.org/maven2/com/h2database/h2/1.4.200/h2-1.4.200.jar) et placez là dans le répertoire contenant vos sources java. `H2` est lui-même écrit en Java. Cette librairie contient donc à la fois les classes utiles au serveur de données, et les classes implémentant le driver JDBC pour s'y connecter.
+
+* Ouvrez une console système à cet endroit et lancez le serveur H2 à l'aide de la commande `java -jar h2-1.4.200.jar`.
+
+Une fenêtre de navigateur s'ouvre, il s'agit d'une application web inclue dans la librairie permettant d'administrer le serveur que nous venons de lancer. Laissons cela de côté pour le moment, votre serveur H2 est prêt à être utilisé. Pour l'arrêter il suffira de faire `CTRL+C` dans la console où vous l'avez lancé, ou de fermer la console.
+
+Dans vos programmes java, pour se connecter à ce serveur le driver se nomme `org.h2.Driver`, et l'url à utiliser est de la forme `jdbc:h2:tcp://localhost:9092/chemin/tp1`.  
+`localhost:9092` correspond à l'adresse et au port sur lesquelles se connecter.  
+`chemin` est l'endroit où la base sera créée.  
+`tp1` est le nom de la base.
+
+Il n'existe qu'un seul utilisateur pour se connecter : login `sa`  
+Vous n'avez pas besoin de mot de passe, une chaine vide conviendra.
+
+1. Modifiez les données de connexion inscrites dans les programmes pour pouvoir utiliser `H2`
+1. Compilez et testez maintenant chacun des programmes précédents.  
+1. Vous pouvez vérifier à l'aide de l'interface Web de H2 que tout s'est bien passé.
+
+Vos programmes java sont les clients du serveur H2 hébergeant une base de données.  
 
 
 ## Un programme générique
@@ -77,7 +86,7 @@ Les programmes que vous avez écrit possèdent le nom du driver et le nom de l�
 Java offre pour cela un objet tout prêt : [java.util.Properties](https://docs.oracle.com/javase/10/docs/api/java/util/Properties.html). Pour utiliser cet objet, il suffit de le charger (methode load à partir d’un descripteur de fichier) et lire les propriétés souhaitées (methode getProperty).
 
 1. Réécrire vos programmes de manière à ce que driver, url, login, password soient externalisés via un objet Properties.
-
+1. Vous constatez maintenant qu'il n'est plus necessaire de compiler les programmes pour changer de SGBD. Il suffit de changer de fichier de propriétés.
 
 
 ## Et maintenant sous forme d’un bel Objet

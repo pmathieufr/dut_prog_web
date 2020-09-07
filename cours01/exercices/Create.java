@@ -14,8 +14,7 @@ public class Create
       Connection con = DriverManager.getConnection(url,nom,mdp);
 
       // execution de la requete
-      // TODO: écrire une requête CREATE
-      String query = "TODO";
+      String query = "create table CLIENTS (NOM varchar(10), PRENOM varchar(10), AGE int)";
       PreparedStatement ps = con.prepareStatement( query );
       ps.executeUpdate();
       // fermeture des espaces

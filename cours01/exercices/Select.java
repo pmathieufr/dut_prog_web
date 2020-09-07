@@ -4,15 +4,17 @@ public class Select
 {  
   public static void main(String args[]) throws Exception
   {      
-      // TODO
       // enregistrement du driver
+      Class.forName("TODO");
+      
       // connexion à la base
-      Connection con = null; 
+      String url = "TODO";
+      String nom = "TODO";
+      String mdp = "TODO";
+      Connection con = DriverManager.getConnection(url,nom,mdp);
 
       // execution de la requete
-      // TODO : écrire une requête SELECT
-      String query = ""; 
-      
+      String query = "select NOM,PRENOM,AGE from CLIENTS";
       PreparedStatement ps = con.prepareStatement( query );
       ResultSet rs = ps.executeQuery();
       
