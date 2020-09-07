@@ -44,11 +44,12 @@ Dans une première partie, tous les exercices seront écrits avec cette base en 
 Le driver n'est pas nécessaire au moment de la compilation.
 1. Exécuter le programme : `java -cp .;postgresql-42-2.16.jar Create`  
 Lors de l'exécution, le classpath java doit contenir le chemin vers la librairie contenant le driver JDBC.
+1. Définir la variable système CLASSPATH pour éviter le `-cp`
 1. Modifiez le programme pour éviter le throws exception
 1. Compléter et tester le programme [Insert.java](Insert.java) qui effectue une insertion de table.
 1. Modifier ce programme pour que l’on puisse insérer 1000 clients d’un coup: nom_1, ... ,nom_1000
 1. Compléter et tester le programme [Select.java](Select.java) qui effectue une sélection de table
-1. Ecrire un nouveau programme Java `Compter.java` qui affiche le nombre de lignes de la table CLIENTS.
+1. Ecrire un nouveau programme Java `Compter.java` qui affiche le nombre de lignes de la table CLIENTS. Attention : il ne doit pas y avoir de `while` : le SGBD sait compter ;-)
 
 **Dans cet exercice, Postgres a été utilisé comme Serveur et vos programmes Java comme Clients.**
 
@@ -65,8 +66,8 @@ Dans cette partie nous allons illustrer l'intérêt de jdbc. En ne modifiant que
 
 Une fenêtre de navigateur s'ouvre, il s'agit d'une application web inclue dans la librairie permettant d'administrer le serveur que nous venons de lancer. Laissons cela de côté pour le moment, votre serveur H2 est prêt à être utilisé. Pour l'arrêter il suffira de faire `CTRL+C` dans la console où vous l'avez lancé, ou de fermer la console.
 
-Dans vos programmes java, pour se connecter à ce serveur le driver se nomme `org.h2.Driver`, et l'url à utiliser est de la forme `jdbc:h2:tcp://localhost:9092/chemin/tp1`.  
-`localhost:9092` correspond à l'adresse et au port sur lesquelles se connecter.  
+Dans vos programmes java, pour se connecter à ce serveur, le driver se nomme `org.h2.Driver`, et l'url à utiliser est de la forme `jdbc:h2:tcp://localhost:9092/chemin/tp1`.  
+`localhost:9092` correspond à l'adresse et au port sur lesquels se connecter.  
 `chemin` est l'endroit où la base sera créée.  
 `tp1` est le nom de la base.
 
