@@ -42,7 +42,7 @@ Dans une première partie, tous les exercices seront écrits avec cette base en 
   - Il faudra utiliser votre login et le mot de passe associé
 1. Compiler le programme : `javac Create.java`  
 Le driver n'est pas nécessaire au moment de la compilation.
-1. Exécuter le programme : `java -cp .;postgresql-42-2.16.jar Create`  
+1. Exécuter le programme : `java -cp .;postgresql-42.2.16.jar Create`  
 Lors de l'exécution, le classpath java doit contenir le chemin vers la librairie contenant le driver JDBC.
 1. Définir la variable système CLASSPATH pour éviter le `-cp`
 1. Modifiez le programme pour éviter le throws exception
