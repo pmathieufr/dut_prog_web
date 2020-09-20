@@ -18,7 +18,7 @@ Si ce n'est pas le cas, vous devez aussi configurer la variable "PATH" de votre 
 
 Configurons correctement deux variables d’environnement :  
 - "CLASSPATH" : pour faciliter la compilation des servlets avec `javac`  
-- "JAVA_HOME" : qui sera utile au serveur web Tomcat
+- "JAVA_HOME" : qui sera utile au serveur web Tomcat (en général déjà configuré)
 
 Vous devez mettre le contenu suivant dans ces variables d'environnement (en l'adaptant à votre situation).
 
@@ -111,15 +111,15 @@ Ce nom __doit__ commencer par "/". L'url d'accès à la servlet sera composée d
 L'exemple précédent aurait évidemment plus être écrit à l'aide d'une page html statique.  
 Lorsque l'on doit générer une grande quantité de code html ou calculer des données, l'utilisation d'une servlet devient nécessaire.  
 
-1. Ecrivez une servlet "Fibonacci" qui affiche les 30 premières valeurs de cette suite célèbre. La suite est définie par `f(n) = f(n-1) + f(n-2) avec f(0) = 0 et f(1) = 1`.  
+1. Ecrivez une servlet `Fibonacci.java` qui affiche les 30 premières valeurs de cette suite célèbre. La suite est définie par `f(n) = f(n-1) + f(n-2) avec f(0) = 0 et f(1) = 1`.  
 Pour le dire plus simplement, les deux premiers nombres sont 1, puis les suivants sont la somme des deux nombres précédents. Le résultat à obtenir doit donc être :  
 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 17711 28657 46368 75025 121393 196418 317811 514229 832040  
 
-1. Les couleurs peuvent être décrites en html à l'aide d'un code hexadécimal codé sur 3 ou 6 caractères représentant un mélange des trois couleurs primaires (rouge, vert, bleu). Ainsi, la couleur codée '#3f5' (rouge=3, vert=f, bleu=5) représente un mélange de 3/15e de rouge, 15/15e de vert et 5/15e de bleu. Sachant cela, Ecrivez une servlet "Palette" qui affiche un tableau html de 16 lignes (v allant de 0 à 15) et 16 colonnes (b allant de 0 à 15). Chaque cellule de ce tableau aura une couleur de fond dont la composante de rouge sera "0", les composantes verte et bleue seront fonction de la colonne (b) et de la ligne (v).  
+1. Les couleurs peuvent être décrites en html à l'aide d'un code hexadécimal codé sur 3 ou 6 caractères représentant un mélange des trois couleurs primaires (rouge, vert, bleu). Ainsi, la couleur codée '#3f5' (rouge=3, vert=f, bleu=5) représente un mélange de 3/15e de rouge, 15/15e de vert et 5/15e de bleu. Sachant cela, Ecrivez une servlet `Palette".java` qui affiche un tableau html de 16 lignes (v allant de 0 à 15) et 16 colonnes (b allant de 0 à 15). Chaque cellule de ce tableau aura une couleur de fond dont la composante de rouge sera "0", les composantes verte et bleue seront fonction de la colonne (b) et de la ligne (v).  
 Vous devriez obtenir quelque chose ressemblant à :  
 ![Palette](img/Palette.png)  
 
-1. Ecrivez une servlet "Ascii" qui affiche une page contenant une table des codes ASCII de 32 à 255 (par exemple sur deux colonnes, la première avec le code et la seconde avec la valeur).  
+1. Ecrivez une servlet `Ascii.java` qui affiche une page contenant une table des codes ASCII de 32 à 255 (par exemple sur deux colonnes, la première avec le code et la seconde avec la valeur).  
 Pour cet exercice, enlevez le `charset=UTF-8` de la méthode `setContentType` et de la balise html `META`.  
 Si votre navigateur le permet, vous pouvez essayer de faire varier l'encodage des caractères pour voir des différences (essentiellement à partir du caractère 127).
 
@@ -127,7 +127,7 @@ Si votre navigateur le permet, vous pouvez essayer de faire varier l'encodage de
 ## Page web dynamique
 
 
-1. Ecrivez une servlet `NouvelAn` qui affiche le nombre de secondes avant la prochaine année.  
+1. Ecrivez une servlet `NouvelAn.java` qui affiche le nombre de secondes avant la prochaine année.  
 Pour cela, vous pouvez importer et utiliser les objets des packages `java.time` et `java.time.temporal` fournis depuis Java 8.  
 
 _exemple_
@@ -158,7 +158,7 @@ Cela devrait créer des tables et des données pour la suite des exercices.
 
 1. Affichez tout ceci dans un tableau html avec les titres de colonnes dans des balises "TH".   
 
-1. Modifier le programme `ListeJoueurs` pour afficher un tableau de joueurs par club. Chaque nom de club sera affiché dans une balise "H2" avant les joueurs correspondants. <sup>2</sup> 
+1. Modifier le programme `ListeJoueurs` pour afficher tous les clubs, mais cette fois avec un tableau de joueurs par club. Chaque nom de club sera affiché dans une balise "H2" avant les joueurs correspondants. <sup>2</sup> 
 
 1. Mettre en rouge les joueurs qui ont plus de 30 ans au moment de l'affichage de la page.
 
