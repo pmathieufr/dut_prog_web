@@ -9,7 +9,7 @@
 
 ## Installation de l’environnement
 
-- Récupérer et décompresser le contenu du fichier [apache-tomcat-9.0.37.zip](http://tomcat.apache.org/). Il s'agit du serveur Java qui nous sera utile pour faire du développement web.
+- Récupérer et décompresser le contenu du fichier [apache-tomcat-9.0.38.zip](http://tomcat.apache.org/). Il s'agit du serveur Java qui nous sera utile pour faire du développement web.
 Notez également l'emplacement et la version du __JDK__ installé, généralement dans "C:\program files\java\". Nous supposerons que vous avez installé une version __1.8.0__ ou supérieure.  
 Afin de vérifier la bonne installation vous pouvez ouvrir une console est exécuter `java -version`.
 
@@ -18,22 +18,22 @@ Si ce n'est pas le cas, vous devez aussi configurer la variable "PATH" de votre 
 
 Configurons correctement deux variables d’environnement :  
 - "CLASSPATH" : pour faciliter la compilation des servlets avec `javac`  
-- "JAVA_HOME" : qui sera utile au serveur web tomcat
+- "JAVA_HOME" : qui sera utile au serveur web Tomcat
 
 Vous devez mettre le contenu suivant dans ces variables d'environnement (en l'adaptant à votre situation).
 
 CLASSPATH=.;E:\tomcat\lib\servlet-api.jar  
-JAVA_HOME=C:\program files\java\jdk1.8.0_172
+JAVA_HOME=C:\program files\java\jdk11.0.1
 
-1. Récupérez le fichier [vide.zip](https://github.com/pmathieufr/dut_prog_web/raw/master/cours02/exercices/vide.zip) et décompressez le dans le répertoire webapps de Tomcat. Il s'agit d'un contexte web de base.  
+1. Récupérez le fichier [vide.zip](https://github.com/pmathieufr/dut_prog_web/raw/master/cours02/exercices/vide.zip) et décompressez le dans le répertoire `webapps` de Tomcat. Il s'agit d'un contexte web de base.  
 
-1. Les scripts de lancement de Tomcat se trouvent dans tomcat\bin. Les fichiers "bat" sont utilisés sous windows alors que les fichiers "sh" sont utilisés sous linux et mac. Il y en a deux scripts différents :  
+1. Les scripts de lancement de Tomcat se trouvent dans `tomcat\bin`. Les fichiers "bat" sont utilisés sous windows alors que les fichiers "sh" sont utilisés sous linux et mac. Il y en a deux scripts différents :  
 — `startup.bat` lancera le serveur en tache de fond et placera les erreurs dans un fichier de log.  
 — `catalina.bat run` lancera le serveur en avant plan affichant les erreur dans la console.  
 Démarrez votre serveur Tomcat. Dans sa configuration standard ce serveur utilise le port 8080.  
 Il faudra donc qu'aucun autre programme sur votre système n'utilise ce port.  
 
-1. Si tout s’est bien passé, l’environnement necessaire est maintenant configuré.
+1. Si tout s’est bien passé, l’environnement nécessaire est maintenant configuré.
 
 ## Test de la configuration
 
@@ -61,7 +61,7 @@ Tomcat fournit en effet tous les fichiers présents dans le répertoire du conte
 Par sécurité, il n'est par contre pas possible d'accéder au contenu du répertoire WEB-INF.
 
 Pour le moment, nous ne faisons que transmettre un fichier au navigateur.  
-Voyons comment exécuter du code java lorsque l'on appelle tomcat.
+Voyons comment exécuter du code java à l'intérieur de Tomcat.
 
 ## Ma première compilation
 
@@ -115,8 +115,8 @@ Lorsque l'on doit générer une grande quantité de code html ou calculer des do
 Pour le dire plus simplement, les deux premiers nombres sont 1, puis les suivants sont la somme des deux nombres précédents. Le résultat à obtenir doit donc être :  
 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 17711 28657 46368 75025 121393 196418 317811 514229 832040  
 
-1. Les couleurs peuvent être décrites en html à l'aide d'un code hexadécimal codé sur 3 ou 6 caractères représentant un mélange des trois couleurs primaires (rouge, vert, bleu). Ainsi, la couleur codée '#3f5' (rouge=3, vert=f, bleu=5) représente un mélange de 3/15e de rouge, 15/15e de vert et 5/15e de bleu. Sachant cela, Ecrivez une servlet "Palette" qui affiche un tableau html de 16 lignes (v alant de 0 à 15) et 16 colonnes (b allant de 0 à 15). Chaque cellule de ce tableau aura une couleur de fond dont la composante de rouge sera "0", les composantes verte et bleue seront fonction de la colonne (b) et de la ligne (v).  
-Vous devriez obtenir quelquechose ressemblant à :  
+1. Les couleurs peuvent être décrites en html à l'aide d'un code hexadécimal codé sur 3 ou 6 caractères représentant un mélange des trois couleurs primaires (rouge, vert, bleu). Ainsi, la couleur codée '#3f5' (rouge=3, vert=f, bleu=5) représente un mélange de 3/15e de rouge, 15/15e de vert et 5/15e de bleu. Sachant cela, Ecrivez une servlet "Palette" qui affiche un tableau html de 16 lignes (v allant de 0 à 15) et 16 colonnes (b allant de 0 à 15). Chaque cellule de ce tableau aura une couleur de fond dont la composante de rouge sera "0", les composantes verte et bleue seront fonction de la colonne (b) et de la ligne (v).  
+Vous devriez obtenir quelque chose ressemblant à :  
 ![Palette](img/Palette.png)  
 
 1. Ecrivez une servlet "Ascii" qui affiche une page contenant une table des codes ASCII de 32 à 255 (par exemple sur deux colonnes, la première avec le code et la seconde avec la valeur).  
@@ -139,12 +139,12 @@ Duration delay = Duration.between(today, aprilFirst);
 long seconds = delay.get( ChronoUnit.SECONDS );
 ```
 
-Chaque appel à cette servlet doit donc logiquement générer un affichage différents. Ce n'était pas le cas des servlets écrites jusqu'à présent.
+Chaque appel à cette servlet doit donc logiquement générer un affichage différent. Notez que ce n'était pas le cas des servlets écrites jusqu'à présent !
 
 
 ## Servlet en lien avec une base de données
 
-Il est tout à fait possible, dans une servlet, d'afficher des données provenant d'un SGBD. C'est ce que font la majorité des applications web. Nous allons utiliser JDBC dans notre servlet.
+Il est tout à fait possible, dans une servlet, d'afficher des données provenant d'un SGBD. C'est ce que font la majorité des applications web. Ceci se fait bien évidemment grâce à l'API JDBC, comme nous l'avons déjà fait.
 
 Il faut tout d'abord placer le driver JDBC dans le répertoire `WEB-INF/lib` de votre contexte web.  
 Tomcat se charge d'ajouter tous les jar présents à cet endroit dans son classpath lorsqu'il démarre.  
@@ -154,11 +154,11 @@ Exécutez les requêtes du fichier [foot.sql](https://github.com/pmathieufr/dut_
 Cela devrait créer des tables et des données pour la suite des exercices.
 
 
-1. Ecrivez une servlet "ListeJoueurs" permettant d’afficher le contenu de la table JOUEURS, de la même manière que le programme Select.java écrit dans le TP précédent.  
+1. Ecrivez une servlet `ListeJoueurs.java` permettant d’afficher le contenu de la table JOUEURS, de la même manière que le programme `Select.java` écrit dans le TP précédent.  
 
 1. Affichez tout ceci dans un tableau html avec les titres de colonnes dans des balises "TH".   
 
-1. Modifier ListeJoueurs pour afficher un tableau de joueurs par club. Chaque nom de club sera affiché dans une balise "H2" avant les joueurs correspondants. <sup>2</sup> 
+1. Modifier le programme `ListeJoueurs` pour afficher un tableau de joueurs par club. Chaque nom de club sera affiché dans une balise "H2" avant les joueurs correspondants. <sup>2</sup> 
 
 1. Mettre en rouge les joueurs qui ont plus de 30 ans au moment de l'affichage de la page.
 
