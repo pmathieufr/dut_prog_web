@@ -1,7 +1,7 @@
 # TP : Maintenir un état
 
 Durant ces exercices nous allons étudier les moyens permettant de maintenir un état entre deux requêtes. 
-Nous étudierons tout d'abord la manière d'ajouter des paramètres pour assurer le bon fonctionnement d'une servlet. Nous mettrons en oeuvre ensuite un "Trains de Servlets" puis des aspects Multi-formulaires. Enfin, nous manipulerons es champs cachés pour passer des données d'une page à une autre.
+Nous étudierons tout d'abord la manière d'ajouter des paramètres pour assurer le bon fonctionnement d'une servlet. Nous mettrons en oeuvre ensuite un "Trains de Servlets" puis des aspects Multi-formulaires. Enfin, nous manipulerons des champs cachés pour passer des données d'une page à une autre.
 
 ## Concaténation de paramètres dans l'URL
 
@@ -15,7 +15,7 @@ http://localhost:8080/vide/ListerRencontres?tri=jour
 1. Ajoutez le sens de tri comme autre paramètre de manière à ce que, à la manière d’un "toggle button" : chaque clic sur le nom de colonne inverse l’ordre de tri  
 http://localhost:8080/vide/ListerRencontres  
 http://localhost:8080/vide/ListerRencontres?tri=annee&sens=asc  
-En ouvrant 2 navigateurs, vous constaterez que deux utilisateurs différents, peuvent avoir chacun leurs propres critères simultanément.
+En ouvrant 2 navigateurs, vous constaterez que deux utilisateurs différents peuvent avoir chacun leurs propres critères simultanément.
 
 ## Manipuler un Cookie
 
