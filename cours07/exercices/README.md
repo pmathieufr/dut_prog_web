@@ -35,9 +35,9 @@ Dans ce dernier cas, vous constatez que plus aucun admin ne verra sa page d’af
 
 ## Injection SQL
 L’injection SQL peut se faire dans toute donnée qui sera manipulée par une instruction SQL, ce qui est le cas de tout formulaire d’authentification.
-1. Saisir dans les deux champs login et mdp `’ OR ’1’=’1`
+1. Saisir dans les deux champs login et mdp `' OR '1'='1`
 Vous constatez que l’on se connecte au site avec le login du 1er utilisateur de la base, qui est en général l’administrateur !!
-1. Saisir dans le champs login `’ union select ’x’,’x’,’x’,’x’,’admin’,’x’ --` (des x pour chaque colonne qui n’est pas un rôle, le reste en commentaire)
+1. Saisir dans le champs login `' union select 'x','x','x','x','admin','x' --` (des x pour chaque colonne qui n’est pas un rôle, le reste en commentaire)
 Vous constatez que l’on “force” la connexion à un role spécifique (ici admin !!).
 1. Saisir dans le champs login un login correct, mais sous la forme `unbonlogin' or '1'='1` , puis n'importe quoi dans le champs mot de passe.  
 Vous constatez que l'on se connecte sans le mot de passe en tant que l'utilisateur choisi.
