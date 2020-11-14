@@ -57,7 +57,7 @@ pratique exploite les failles humaines et sociales, la crédulité des personnes
   ```html
   Peux tu jeter un oeil sur ma page perso
   <p>
-  <a href=http://localhost:8080/tp37/servlet-Maj2?login=paul&mdp=toto&nom=&prenom=&adresse=>
+  <a href=http://localhost:8080/tp309/servlet/Maj2?login=paul&mdp=toto&nom=&prenom=&adresse=>
   http://127.12.56.33/mapageperso.html</a>
   <p>
   Merci
