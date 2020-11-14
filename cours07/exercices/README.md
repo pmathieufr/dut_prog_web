@@ -67,10 +67,8 @@ pratique exploite les failles humaines et sociales, la crédulité des personnes
 * Le pirate peut maintenant se logger en paul/toto
 
 ## Le vol de sessions
-Toutes les protections précédentes permettent d'éviter les attaques par injection les plus classiques, mais n'évitent pas pour autant
-le vol de session.
 Dans cet exercice nous allons voir comment se logguer sur un site en utilisant la session d'un autre utilisateur, sans saisir aucun
-login ni mot de passe !
+login ni mot de passe ! C'est ce que l'on appelle un vol de session.
 1. Nous utiliserons Chrome pour l'administrateur (ici paul/paul) et Firefox/Iceweasel pour le "voleur" (ici jean/jean)
 qui est simple utilisateur. Lancez les deux et recadrez ces fenetres pour qu'elles soient côte à côte : Chromium à gauche,
 Firefox à droite.
