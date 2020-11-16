@@ -5,6 +5,8 @@
 Ecrire et manipuler des Java Server Pages (JSP).  
 L’avantage de Tomcat c’est qu’il accepte aussi bien des Servlets que des JSP. Les JSP se placent au même endroit que les pages HTML, c'est Tomcat qui s'occupe de les transformer en Servlets, de les compiler et de les exécuter.
 
+Afin de repartir sur un contexte propre, créez un nouveau contexte `tpjsp`sous `webapps`
+
 ## Principe de base
 
 1. Ecrire une page HTML `mapage.html` avec quelques lignes et quelques accents
@@ -21,9 +23,9 @@ L’avantage de Tomcat c’est qu’il accepte aussi bien des Servlets que des J
      </body>
     </html>
     ```
-1. Visualizez cette page en HTTP via votre navigateur `http://localhost:8080/vide/mapage.html`
+1. Visualizez cette page en HTTP via votre navigateur `http://localhost:8080/tpjsp/mapage.html`
 1. Renommez cette page en `.jsp`
-1. Visualizez cette page JSP en HTTP via votre navigateur `http://localhost:8080/vide/mapage.jsp`  
+1. Visualizez cette page JSP en HTTP via votre navigateur `http://localhost:8080/tpjsp/mapage.jsp`  
 La page s'affiche correctement, accents mis à part.  
 **Explications :** La JSP est transformée en Servlet par Tomcat. La servlet standard utilisée par Tomcat utilise l'encodage Latin1. Le tag `meta` tel qu'il est mis dans cette page arrive "trop tard" pour être pris en compte.
 1. Supprimez la ligne `meta` et placez en tête de votre fichier la directive de compilation :  
@@ -39,7 +41,7 @@ Cette fois tout doit s'afficher correctement.
 1. Vérifiez que tout s'affiche correctement.
 1. Ce test n'est pas anodin ! pour qu'elle puisse s'afficher cette page a été transformée en Servlet , puis compilée puis exécutée. 
 1. Mais où est donc cette fameuse servlet ? Allez dans le répertoire  
-`work/Catalina/localhost/vide/org/apache/jsp`  
+`work/Catalina/localhost/tpjsp/org/apache/jsp`  
 Vous y trouvez un fichier `mapage_jsp.java` et sa compilation `mapage_jsp.class`
 1. Editez le fichier `mapage_jsp.java`. En le parcourant, vous trouverez notamment, (ligne 11) les import classiques, (ligne 15) la définition de la classe, (ligne 38) la méthode de service avec nos deux paramètres habituels, (ligne 47) la définition des objets implicites, (ligne 105) la création de ces objets implicites, (ligne 62) votre code HMTL, (ligne 77 le code Java que vous avez placé dans la JSP.
 
@@ -50,7 +52,7 @@ Vous y trouvez un fichier `mapage_jsp.java` et sa compilation `mapage_jsp.class`
 ## L'accès à une base de données
 
 Vous savez maintenant placer du code dans une JSP, Essayons maintenant d'accéder à la base de données.  
-Modifier la JSP précédente pour qu'elle permette d'afficher le contenu d'une de vos tables SGBD (au choix, sans métabase) dans une table HTML. Vous aurez évidemment besoin pour cela
+Créez une JSP `mabase.jsp` permettant d'afficher le contenu d'une de vos tables SGBD (au choix, sans métabase) dans une table HTML. Vous aurez évidemment besoin pour cela
    1. de directives de compilation pour les import `<@ page import ... >`
    1. de scriplets JSP `<% ... %>`
    1. de JSP expressions `<%= ... %>`
@@ -71,7 +73,7 @@ Les objets (quels qu'ils soient) **doivent** être dans le répertoire `WEB-INF/
     }
     ```
 1. Compilez cet objet ! Si les JSP se débrouillent seules, c'est quand même à vous de compiler vos objets ;-)
-1. Instanciez cet objet dans votre JSP (pensez au `import`) et affichez le.
+1. Créez une JSP `monobjet.jsp` qui instancie cet objet (pensez au `import`) et qui permet de l'afficher.
 1. Rechargez plusieurs fois cette page. Le compteur placé dans l'objet s'incrémente t-il ?
   1. Comment faire pour que ce compteur soit propre à chaque utilisateur ?
   1. Comment faire pour que ce compteur soit global à tous les utilisateurs ?
