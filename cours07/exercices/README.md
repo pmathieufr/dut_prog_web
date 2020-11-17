@@ -82,9 +82,8 @@ Firefox à droite.
 il laisse sa session ouverte en allant boire un café :-(
 1. Jean, le voleur en profite pour utiliser son navigateur et afficher la liste des coordonnées. L'affichage de cette page lui donne le `JSESSIONID`. Faites un copier du numéro.
 1. Jean, le voleur retourne sur son navigateur Firefox qu'il lance sur la page de Menu
-1. Avec `Firebug` (Affichage - Firebug), il va dans l'onglet cookie et modifie l'identfiant de session en mettant celui volé 1
+1. Avec la console Web  (Outils - Dev Web - Console Web), il va dans l'onglet `Stockage` et modifie l'identifiant de session en mettant celui volé précédemment.
 1. Après un reload de cette page, il est maintenant connecté comme administrateur !
-1. Les cookies sont accessibles coté client via les langages de Script comme Javascript. Certains navigateurs refusent cet accès pour les cookies avec la marque `HttpOnly`. Pour se protéger il faut donc toujours paramétrer son serveur avec des `HttpOnly` cookies.
 
 
 ## Industrialiser les vols de sessions
@@ -99,6 +98,11 @@ un parametre `p` et le range dans une table `numsessions(p text)`.
     ```
 1. Demandez maintenant à vos voisins d'afficher cette page et de cliquer sur le lien
 1. A chaque click d'un utilisateur, son numéro de session vient remplir votre table de sessions volées. Il ne vous reste plus qu'à laisser ce piège toute la nuit, demain matin, votre BDD sera pleine de cookies tous frais ;-)
+
+
+Remarque : Les cookies sont accessibles coté client via les langages de Script comme Javascript. Le tag `HttpOnly` empêche d’accéder aux cookies par Javascript. Pour se protéger il est préférable soit d'utiliser la méthode `setHttpOnly`à la création du cookie, soit de paramétrer son serveur avec des `HttpOnly` cookies.
+
+
 
 ## Mise en sécurité "élémentaire" du site
 1. Afin d'éviter l'injection XSS une technique basique et inefficace consiste à faire des replaceAll sur les chaines de caractères pour supprimer les caractères spéciaux `<>'()`. Testez cette approche sur le paramètre adresse.
