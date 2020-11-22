@@ -3,15 +3,15 @@
 ## Objectif :
 
 Un objet d’accès aux données est un patron de conception qui permet de regrouper les accès aux données persistantes dans des
-classes à part plutot que de les disperser dans le code. C’est aussi ce que l’on appelle un "mapping objet-relationnel". L’idée générale
+classes à part plutôt que de les disperser dans le code. C’est aussi ce que l’on appelle un "mapping objet-relationnel". L’idée générale
 consiste à regrouper tous les accès à la base de données dans ces objets afin de favoriser une conception type MVC (détails
 [Wikipedia](http://fr.wikipedia.org/wiki/Objet_d%27acc%C3%A8s_aux_donn%C3%A9es) ou [oracle](http://www.oracle.com/technetwork/java/dataaccessobject-138824.html)).
 
 ## Réutilisabilité d'un DAO
 
 1. Créer une table `joueur(jno,pseudo,email,pwd,elo)` (jno et elo étant des int) et alimenter cette table de quelques données quelconques (on pourra s'inspirer de [wikipedia](https://fr.wikipedia.org/wiki/Grand_ma%C3%AEtre_international) ou prendre le fichier `joueur.sql`).
-Créer un objet POJO `Joueur.java` qui permettra de recevoir les données de ce joueur. Ajoutez une méthode `toString` à cet objet qui affiche toutes les caractéristiques du joueur saus son mot de passe.  
-Ecrire un programme java classique `AfficherJoueur.java` avec un `main`qui prend en argument un identifiant, effectue classiquement une requête select, charge les données dans un objet `Joueur` et affiche les informations de cet objet grâce à son `toString`.
+Créer un objet POJO `Joueur.java` qui permettra de recevoir les données de ce joueur. Ajoutez une méthode `toString` à cet objet qui affiche toutes les caractéristiques du joueur sauf son mot de passe.  
+Ecrire un programme java classique `AfficherJoueur.java` avec un `main` qui prend en argument un identifiant, effectue classiquement une requête select, charge les données dans un objet `Joueur` et affiche les informations de cet objet grâce à son `toString`.
 1. Si l'on doit créer une servlet ou une JSP qui affiche un joueur il serait nécessaire de refaire la même chose. Cela duplique le code, ce qui n'est pas profitable pour la maintenance, l'évolution et la correction de notre programme. Il est préférable de factoriser le code servant à obtenir un Joueur.  
 Créer un objet `JoueurDao.java` dans lequel vous implémenterez une méthode `Joueur findById(int id)`. Dans un premier temps on placera le code de connexion dans cette méthode. Modifier votre programme `AfficherJoueur.java` pour utiliser votre Dao.
 1. Créer une JSP qui affiche un joueur `AfficherJoueur.jsp`. Pour cela importez le Dao, recherchez le joueur dont l'identifiant est passé en paramètre de la requête et affichez les informations du joueur via `toString`. On ne ne s'occupe pas de la mise en forme dans un premier temps. Votre code est maintenant utilisable dans différentes situation (programme, jsp, servlet ...)
