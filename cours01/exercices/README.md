@@ -42,7 +42,7 @@ Dans une première partie, tous les exercices seront écrits avec la base Postgr
 1. Compiler le programme : `javac Create.java`  
 Le driver n'est pas nécessaire au moment de la compilation.
 1. Exécuter le programme : `java -cp .;postgresql-42.2.23.jar Create`  
-Lors de l'exécution, le classpath java doit contenir le chemin vers la librairie contenant le driver JDBC.
+Lors de l'exécution, le classpath java doit contenir le chemin vers la librairie contenant le driver JDBC, mais aussi le chemin vers Create.java
 1. Définir la variable système CLASSPATH pour éviter le `-cp`
 1. Modifiez le programme pour éviter le throws exception
 1. Compléter et tester le programme [Insert.java](Insert.java) qui effectue une insertion de table.
@@ -55,21 +55,21 @@ Lors de l'exécution, le classpath java doit contenir le chemin vers la librairi
 
 ## Indépendance de JDBC et du SGBD : passage à H2
 
-Dans cette partie nous allons illustrer l'intérêt de jdbc. En ne modifiant que le driver et les paramètres de connexion JDBC, nous allons ré-exécuter ces programmes en utilisant cette fois la base de données `H2`. On utilise cette fois `H2` comme serveur de données, les programmes Java étant toujours des clients.
+Dans cette partie nous allons illustrer l'intérêt de JDBC. En ne modifiant que le driver et les paramètres de connexion JDBC, nous allons ré-exécuter ces programmes en utilisant cette fois la base de données `H2`. On utilise cette fois `H2` comme serveur de données, les programmes Java étant toujours des clients.
 
 * Contrairement à Postgresql, H2 n'est pas installé sur votre machine. Il va falloir lancer le serveur "à la main".
 
 * Téléchargez la librairie [h2-1.4.200.jar](https://repo1.maven.org/maven2/com/h2database/h2/1.4.200/h2-1.4.200.jar) et placez là dans le répertoire contenant vos sources java. `H2` est lui-même écrit en Java. Cette librairie contient donc à la fois les classes utiles au serveur de données, et les classes implémentant le driver JDBC pour s'y connecter.
 
-* Ouvrez une console système dans ce répertoire et lancez le serveur H2 à l'aide de la commande `java -cp h2*.jar org.h2.tools.Server -ifNotExists` 
+* Ouvrez une console Linux dans ce répertoire et lancez le serveur H2 à l'aide de la commande `java -cp h2*.jar org.h2.tools.Server -ifNotExists` 
 (Il existe d'autres commandes de lancement mais elles ne permettent pas la création d'une base; seul un pgm en mode embedded pourrait le faire.)
 
 Une fenêtre de navigateur s'ouvre, il s'agit d'une application web inclue dans la librairie permettant d'administrer le serveur que nous venons de lancer. Laissons cela de côté pour le moment, votre serveur H2 est prêt à être utilisé. Pour l'arrêter il suffira de faire `CTRL+C` dans la console où vous l'avez lancé, ou de fermer la console.
 
-Dans vos programmes java, pour se connecter à ce serveur, le driver se nomme `org.h2.Driver`, et l'url à utiliser est de la forme `jdbc:h2:tcp://localhost/chemin/tp1`.  
+Dans vos programmes java, pour se connecter à ce serveur, le driver se nomme `org.h2.Driver`, et l'url à utiliser est de la forme `jdbc:h2:tcp://localhost/chemin/mabaseh2`.  
 `localhost` correspond à la machine qui héberge le serveur (port 9092 par défaut).  
 `chemin` est l'endroit où la base sera créée sur cette machine.  
-`tp1` est le nom de la base.
+`mabaseh2` est le nom du fichier qui stockera la base.
 
 Il n'existe qu'un seul utilisateur pour se connecter : login `sa`  
 Vous n'avez pas besoin de mot de passe, une chaine vide conviendra.
@@ -124,4 +124,6 @@ Voici quelques pistes pour y parvenir :
 - déterminer combien de colonnes sont retournées par l'exécution de notre requête Select.  
 Un objet obtenu par la méthode [getMetadata()](https://docs.oracle.com/en/java/javase/16/docs/api/java.sql/java/sql/ResultSet.html#getMetaData()) de `ResultSet` pourra nous y aider. La méthode [getColumnCount()](https://docs.oracle.com/en/java/javase/16/docs/api/java.sql/java/sql/ResultSetMetaData.html#getColumnCount()) vous sera utile.
 - parcourir le ResultSet et afficher chaque valeur de colonne, sous forme d'une chaine de caractère.
+
+
 
