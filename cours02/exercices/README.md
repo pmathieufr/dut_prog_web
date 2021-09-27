@@ -9,19 +9,18 @@
 
 ## Installation de l’environnement
 
-- Récupérer et décompresser le contenu du fichier [apache-tomcat-9.0.38.zip](http://tomcat.apache.org/). Il s'agit du serveur Java qui nous sera utile pour faire du développement web.
+- Récupérer et décompresser le contenu du fichier [tomcat9 (Core)](http://tomcat.apache.org/download-90.cgi). Il s'agit du serveur Java qui nous sera utile pour faire du développement web.
 Notez également l'emplacement et la version du __JDK__ installé, généralement dans "C:\program files\java\". Nous supposerons que vous avez installé une version __1.8.0__ ou supérieure.  
 Afin de vérifier la bonne installation vous pouvez ouvrir une console est exécuter `java -version`.
 
 Vérifiez aussi que vous êtes en mesure d'appeler le compilateur en éxécutant `javac -version`.  
 Si ce n'est pas le cas, vous devez aussi configurer la variable "PATH" de votre système.
 
-Configurons correctement deux variables d’environnement :  
+Vérifiez les variables d'environnement suivantes. Elles doivent contenir les chemins permettant d'accéder à toutes les classes et commandes nécessaires à la compilation.
 - "CLASSPATH" : pour faciliter la compilation des servlets avec `javac`  
 - "JAVA_HOME" : qui sera utile au serveur web Tomcat (en général déjà configuré)
 
-Vous devez mettre le contenu suivant dans ces variables d'environnement (en l'adaptant à votre situation).
-
+Si ce n'est pas déjà fait, configurez correctement deux variables d’environnement :  
 CLASSPATH=.;E:\tomcat\lib\servlet-api.jar  
 JAVA_HOME=C:\program files\java\jdk11.0.1
 
@@ -37,13 +36,13 @@ Il faudra donc qu'aucun autre programme sur votre système n'utilise ce port.
 
 ## Test de la configuration
 
-Lancez Firefox (ou autres) et accédez à votre serveur à l’adresse http://localhost:8080/vide. La page de test doit s’afficher correctement.  
-__Attention__: Si vous utiliser un proxy (c'est le cas à l'université de Lille), il faudra soit le désactiver dans votre navigateur, soit indiquer que vous ne l'utilisez pas pour "localhost" dans les paramètres réseau.
+Lancez Firefox (ou autres) et accédez à votre serveur à l’adresse http://localhost:8080 La page de de garde de Tomcat doit s’afficher correctement.  
+__Attention__: Si vous utiliser un proxy (c'est le cas à l'université de Lille), il faudra soit le désactiver dans votre navigateur, soit indiquer que vous ne l'utilisez pas pour "localhost" dans General/Paramètres réseau.
 
 
 ## Ma première page HTML
 
-Créez dans le répertoire `tomcat/webapps/vide` une page HTML nommée `essai.html`.
+Dans le répertoire `tomcat/webapps/vide` créez une page HTML nommée `essai.html`.
 
 ```html
 <HTML>
@@ -57,15 +56,15 @@ Créez dans le répertoire `tomcat/webapps/vide` une page HTML nommée `essai.ht
 
 Vous pouvez y accéder par l’URL http://localhost:8080/vide/essai.html
 
-Tomcat fournit en effet tous les fichiers présents dans le répertoire du contexte.  
-Par sécurité, il n'est par contre pas possible d'accéder au contenu du répertoire WEB-INF.
+Tomcat laisse accès en effet tous les fichiers présents dans le répertoire du contexte.  
+Par sécurité, il n'est par contre pas possible d'accéder au contenu du répertoire `WEB-INF`. Tout ce qui est dans ce répertoire est privé, sauf avis contraire (avec `@WebServlet` par exemple).
 
 Pour le moment, nous ne faisons que transmettre un fichier au navigateur.  
 Voyons comment exécuter du code java à l'intérieur de Tomcat.
 
 ## Ma première compilation
 
-L’archive qui vous a été donnée contient une page `Test.html` qui appelle une servlet `Test.java`. Une erreur s’est glissée dans chacun de ces programmes. Faites en sorte que tout fonctionne bien<sup>1</sup>.
+L’archive qui vous a été donnée contient une page `Test.html` qui appelle une servlet `Test.java`. Une erreur s’est glissée dans chacun de ces programmes. Faites en sorte que tous les liens fonctionnent correctement<sup>1</sup>.
 
 Ce test n’est pas anodin ! Si vous êtes arrivés ici, c’est que le serveur web, le moteur de servlets, le réseau, le proxy, les variables d’environnement système sont tous bien réglés et que vous savez compiler et exécuter une Servlet !
 
