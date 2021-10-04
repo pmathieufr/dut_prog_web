@@ -41,7 +41,7 @@ Vous pouvez essayer de placer l'attribut `selected` sur l'option qui correspond 
 
 Une fédération sportive organise un championnat entre des clubs. Afin de gérer efficacement ce travail, elle décide de réaliser une application WEB qui s’appuie sur une simple table qui contiendra au fur et à mesure, l’ensemble des résultats de chaque rencontre.  
 
-Le fichier sql fourni dans le cours précédant contient déjà cette table et quelques lignes à l'intérieur.
+Le fichier sql fourni dans le cours précédent contient déjà cette table et quelques lignes à l'intérieur.
 
 table _rencontres_
 
@@ -57,10 +57,11 @@ table _rencontres_
 
 ### Une servlet simple
 
-1. Ecrire une servlet `ListeSimple` qui affiche l’ensemble des informations de la table _rencontres_ dans une table HTML.
-Cette page est donc appelée par la requête HTTP : http://localhost:8080/vide/ListeSimple
+1. Ecrire une servlet `ListeRencontres` qui affiche l’ensemble des informations de la table _rencontres_ dans une table HTML.
+Cette page est donc appelée par la requête HTTP : http://localhost:8080/vide/ListeRencontres
+On pourra lui associer la même feuille CSS que pour `ListeJoueurs` de la séance précédente.
 
 ### Saisir et insérer des données
 
-1. Créer une servlet `CreerRencontre` qui permet de saisir et d'insérer une nouvelle rencontre dans la base. L'affichage du formulaire pourra se faire dans le `doGet` et la gestion de l'insertion dans le `doPost`. Si l'insertion s'est bien passée, vous pouvez rediriger l'utilisateur vers `ListeSimple`.  
+1. Créer une servlet `CreerRencontre` qui permet de saisir et d'insérer une nouvelle rencontre dans la base. L'affichage du formulaire pourra se faire dans le `doGet` et la gestion de l'insertion dans le `doPost`. Si l'insertion s'est bien passée, vous pouvez rediriger l'utilisateur vers `ListeRencontres`.  
 
