@@ -5,7 +5,7 @@
 L'objectif de cet exercice consiste à mettre en place un MCV trivial.
 - Le modèle sera constitué d'un "Dao" trivial (`DAO.java`), qui, au lieu de se connecter à la base de données, gère une liste d'objets créés en dur dans le constructeur de ce DAO. Par exemple, une liste de String. On écrira deux méthodes dans ce modèle : `findAll` qui renvoie la liste, et `findById` qui renvoie le nième object (modulo la taille) de la liste `n` étant passé en paramètre de la méthode.
 - Ecrire un contrôleur pour ce modèle (`Control.java`), qui prendra en paramètre l'action choisie. Le contrôleur gèrera deux actions : `vignette` ou `liste` et appellera dans le premier cas, une vue qui affiche le nième object de la liste (`vignette.jsp`), `n` étant passé en paramètre de la requête en plus de l'action, et dans le second cas, une vue qui affiche la liste totale de ces objets (`liste.jsp` , sans paramètre cette fois).  
-
+- Ajouter à la vue `Vignette.jsp` un titre avec l'indice `n` qui a  été demandé.
 
 ## Exercice 2
 
